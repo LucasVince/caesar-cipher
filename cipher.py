@@ -5,12 +5,15 @@ def cipher(message, deslocation):
     for iLetter in range(len(message)):
         char = message[iLetter].lower()
 
-        if (char not in alphabet):
-            return ValueError(f'{char} not allowed')
-        
+        if deslocation > 26:
+            return ValueError('deslocation can only be lower or equal to 26')
+
         if char == ' ':
             ciphered_message += ' '
             continue
+
+        if (char not in alphabet):
+            return ValueError(f'{char} not allowed')
 
         deslocation_index = alphabet.index(char) + deslocation
 
@@ -20,5 +23,3 @@ def cipher(message, deslocation):
         ciphered_message += alphabet[deslocation_index]
 
     return ciphered_message
-
-print(cipher('hello world', 3))

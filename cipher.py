@@ -5,6 +5,9 @@ def cipher(message, deslocation):
     for iLetter in range(len(message)):
         char = message[iLetter].lower()
 
+        if (char not in alphabet):
+            return ValueError(f'{char} not allowed')
+        
         if char == ' ':
             ciphered_message += ' '
             continue
